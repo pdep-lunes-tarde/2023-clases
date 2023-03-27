@@ -10,6 +10,27 @@ import PdePreludat
 
 esBisiesto :: Number -> Bool
 esBisiesto año =
-    (mod año 4 == 0 && mod año 100 /= 0) || mod año 400 == 0
+    (esDivisiblePor año 4 &&
+        not (esDivisiblePor año 100))
+        || esDivisiblePor año 400
+
+esDivisiblePor :: Number -> Number -> Bool
+esDivisiblePor dividendo divisor =
+    mod dividendo divisor == 0
 -- Un año es bisiesto si es divisible por 400 o
 -- si es divisible por 4 pero no por 100.
+
+-- int cantidadDePares(int numeros[], int tope) {
+--   int i, cantidad = 0;
+
+--   for (i=0; i < tope; i++) {
+--     if(esPar(numeros[i])){
+--       cantidad = cantidad + 1;
+--     }
+--   }
+
+--   return cantidad
+-- }
+
+cantidadDePares :: [Number] -> Number
+cantidadDePares = length . filter even
