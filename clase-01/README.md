@@ -7,7 +7,7 @@
 
 ## Para la clase que viene
 - Preparar el ambiente como dice en el TP-0:
-TODO CAMBIAR POR EL LINK CORRECTO
+https://classroom.github.com/a/hPaWgaLY
 - Unirse al servidor de discord:
 https://discord.gg/2w9csnPC
 
