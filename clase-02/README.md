@@ -3,13 +3,19 @@
 ## Material de la clase
 
 - Slides: https://docs.google.com/presentation/d/1yNCTH0L01Zc_Ugsy-I-Uj-oj66JnDTUa-cbQywdtlkY/edit
-- Código: Acá mismo :D.
 
 ## Para la clase que viene
 
 - Hacer el [TP-1](https://classroom.github.com/a/P1FuMTzM)
 
 ## ¿Qué mas puedo leer, ver o practicar?
+
+### Ejercicio: implementar 'preguntar'
+
+En la carpeta `clase-02/src` hay un archivo `Library.hs` con una función para completar y un archivo `Spec.hs` con tests sobre como debería funcionar. Se puede 
+
+Si quieren ver como lo resolvimos el año pasado, pueden ver el video de la clase grabada (la resolución de este ejercicio empieza en el minuto 58) :
+https://drive.google.com/file/d/19uEPxSaKsmy-xAmqWDoLADfw5sujsfra/view?usp=share_link
 
 ### Apuntes de la cátedra
 
