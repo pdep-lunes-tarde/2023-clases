@@ -2,23 +2,14 @@
 
 ## Material de la clase
 
-- Clase grabada: _**Proximamente**_
-- Slides: https://docs.google.com/presentation/d/19U1WsoftMn5ov38h5IneV0OySJNk2ZO-6jBXp8biYGE/edit?usp=sharing
+- Slides: https://docs.google.com/presentation/d/1yNCTH0L01Zc_Ugsy-I-Uj-oj66JnDTUa-cbQywdtlkY/edit
 - Código: Acá mismo :D.
 
 ## Para la clase que viene
 
-- Hacer el [TP-1](https://classroom.github.com/a/hWNNeNip)
+- Hacer el [TP-1](https://classroom.github.com/a/P1FuMTzM)
 
 ## ¿Qué mas puedo leer, ver o practicar?
-
-### Práctica de Mumuki
-
-Si no podés entrar a las guías puede ser porque aún no te inscribiste al curso en mumuki. Para eso, hace click [acá](https://mumuki.io/pdep-utn/join/l_-rMA)
-
-Con lo que vimos hasta ahora, pueden hacer las siguientes guías:
-- [Lección 1: Valores y Funciones.](https://mumuki.io/pdep-utn/lessons/688-programacion-funcional-valores-y-funciones)
-- [Lección 2: Práctica valores y funciones](https://mumuki.io/pdep-utn/lessons/689-programacion-funcional-practica-valores-y-funciones)
 
 ### Apuntes de la cátedra
 
