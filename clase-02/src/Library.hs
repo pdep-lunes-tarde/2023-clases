@@ -1,4 +1,5 @@
-module Library where
+module Library (module Library, isPrefixOf, isSuffixOf) where
+
 import PdePreludat
 import Data.List (isPrefixOf, isSuffixOf)
 
