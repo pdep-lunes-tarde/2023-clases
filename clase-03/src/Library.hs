@@ -9,8 +9,24 @@ import PdePreludat
 -- Queremos tener una función que nos diga si una carta puede jugarse después de otra.
 -- Por ahora, vamos a arrancar implementando solo las cartas con números.
 
-sePuedeJugar = implementame
+type Carta = (String, Number)
 
+sePuedeJugar :: Carta -> Carta -> Bool
+sePuedeJugar cartaInicial cartaAJugar = tienenMismoNumero cartaInicial cartaAJugar || tienenMismoColor cartaInicial cartaAJugar
+
+tienenMismoNumero :: Carta -> Carta -> Bool
+tienenMismoNumero (_, numero) (_, otroNumero) = numero == otroNumero
+
+tienenMismoColor :: Carta -> Carta -> Bool
+tienenMismoColor (color, _) (otroColor, _) = color == otroColor
+-- tienenMismoColor unaCarta otraCarta =
+--     color unaCarta == color otraCarta
+
+color :: Carta -> String
+color (unColor, _) = unColor
+
+numero :: Carta -> Number
+numero (_, unNumero) = unNumero
 ---------------------
 ------ Parte 1 ------
 ---------------------
