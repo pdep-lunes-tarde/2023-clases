@@ -13,10 +13,11 @@ import PdePreludat
 
 -- Defino un tipo Carta, y una Carta se 
 -- construye haciendo:
--- UnaCarta unString unNumber
+-- CartaNumerica unString unNumber
 -- Ej:
--- UnaCarta "Rojo" 3
-data Carta = UnaCarta Color Number
+-- CartaNumerica "Rojo" 3
+data Carta = CartaNumerica Color Number
+            | Mas4 Color
     deriving (Eq, Show)
 
 -- Defino un tipo Color, y un Color se
@@ -28,25 +29,30 @@ data Color = Rojo | Azul | Verde | Amarillo
     deriving (Eq, Show)
 
 sePuedeJugar :: Carta -> Carta -> Bool
+sePuedeJugar _ (Mas4 _) = True
+sePuedeJugar (Mas4 color) otraCarta =
+    tienenMismoColor (Mas4 color) otraCarta
 sePuedeJugar cartaInicial cartaAJugar = tienenMismoNumero cartaInicial cartaAJugar || tienenMismoColor cartaInicial cartaAJugar
 
 tienenMismoNumero :: Carta -> Carta -> Bool
-tienenMismoNumero (UnaCarta _ numero) (UnaCarta _ otroNumero) = numero == otroNumero
+tienenMismoNumero (CartaNumerica _ numero) (CartaNumerica _ otroNumero) = numero == otroNumero
 
 tienenMismoColor :: Carta -> Carta -> Bool
-tienenMismoColor (UnaCarta color _) (UnaCarta otroColor _) = color == otroColor
--- tienenMismoColor unaCarta otraCarta =
---     color unaCarta == color otraCarta
+tienenMismoColor unaCarta otraCarta =
+    color unaCarta == color otraCarta
+-- tienenMismoColor CartaNumerica otraCarta =
+--     color CartaNumerica == color otraCarta
 
 -- color :: Carta -> String
 -- color (unColor, _) = unColor
 color :: Carta -> Color
-color (UnaCarta unColor _) = unColor 
+color (CartaNumerica unColor _) = unColor
+color (Mas4 unColor) = unColor 
 
 -- numero :: Carta -> Number
 -- numero (_, unNumero) = unNumero
 numero :: Carta -> Number
-numero (UnaCarta _ unNumero) = unNumero
+numero (CartaNumerica _ unNumero) = unNumero
 
 
 
@@ -58,19 +64,23 @@ numero (UnaCarta _ unNumero) = unNumero
 -- Hay jugadores, que tienen un nombre y una cantidad de puntos que obtuvieron
 -- por sus resultados en partidas de uno.
 -- Queremos poder pedirle su nombre y también sus puntos.
-type Jugador = (String, Number)
+-- type Jugador = (String, Number)
+data Jugador = UnJugador String Number
+    deriving (Eq, Show)
 
 juan :: Jugador
-juan = ("Juan", 10)
+-- juan = ("Juan", 10)
+juan = UnJugador "Juan" 10
 
 nombre :: Jugador -> String
-nombre (unNombre, _) = unNombre
+-- nombre (unNombre, _) = unNombre
+nombre (UnJugador unNombre _) = unNombre
 -- Ejemplo:
 -- nombre juan
 -- > "Juan"
 
 puntos :: Jugador -> Number
-puntos (_, unosPuntos) = unosPuntos
+puntos (UnJugador _ unosPuntos) = unosPuntos
 -- Ejemplo:
 -- puntos juan
 -- > 10
@@ -78,20 +88,44 @@ puntos (_, unosPuntos) = unosPuntos
 ---------------------
 ------ Parte 2 ------
 ---------------------
+-- Puesta en comun 4:40
 
 -- Queremos saber entre dos jugadores, quien tiene mas puntos.
 -- Si ambos tienen la misma cantidad de puntos, me da el primero que le pasé.
 -- Nota: esto tiene que devolver un jugador.
-juani = implementame
+juani = UnJugador "Juani" 15
 
-quienTieneMasPuntos unJugador otroJugador = implementame
+quienTieneMasPuntos :: Jugador -> Jugador -> Jugador
+quienTieneMasPuntos unJugador otroJugador
+    | puntos unJugador >= puntos otroJugador = unJugador
+    | otherwise = otroJugador
 
 -- Queremos registrarle a un jugador el resultado de una partida:
 -- si el resultado es que ganó, suma 3 puntos
 -- si el resultado es que empató, suma 1 punto
 -- si el resultado es que perdió, suma 0 puntos
+data Resultado = Gano | Perdio | Empato
+    deriving (Eq, Show)
 
-trasJugarPartida jugador resultado = jugador
+sumaPuntaje :: Number -> Jugador -> Jugador
+sumaPuntaje unPuntaje (UnJugador nombre puntaje) = UnJugador nombre (puntaje + unPuntaje) 
+
+trasJugarPartida :: Jugador -> Resultado -> Jugador
+-- trasJugarPartida jugador resultado
+--     | resultado == Gano = sumaPuntaje 3 jugador
+--     | resultado == Empato = sumaPuntaje 1 jugador
+--     | resultado == Perdio = jugador
+-- trasJugarPartida jugador Gano = sumaPuntaje 3 jugador
+-- trasJugarPartida jugador Empato = sumaPuntaje 1 jugador
+-- trasJugarPartida jugador Perdio = sumaPuntaje 0 jugador
+trasJugarPartida jugador resultado =
+    sumaPuntaje (puntosQueDa resultado) jugador
+
+puntosQueDa :: Resultado -> Number
+puntosQueDa Gano = 3
+puntosQueDa Empato = 1
+puntosQueDa Perdio = 0
+
 
 ---------------------
 ------ Parte 3 ------
