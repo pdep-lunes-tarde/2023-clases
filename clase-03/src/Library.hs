@@ -16,7 +16,16 @@ import PdePreludat
 -- UnaCarta unString unNumber
 -- Ej:
 -- UnaCarta "Rojo" 3
-data Carta = UnaCarta String Number
+data Carta = UnaCarta Color Number
+    deriving (Eq, Show)
+
+-- Defino un tipo Color, y un Color se
+-- construye haciendo:
+-- Rojo, o Azul, o Verde, o Amarillo
+-- Ej:
+-- Rojo
+data Color = Rojo | Azul | Verde | Amarillo
+    deriving (Eq, Show)
 
 sePuedeJugar :: Carta -> Carta -> Bool
 sePuedeJugar cartaInicial cartaAJugar = tienenMismoNumero cartaInicial cartaAJugar || tienenMismoColor cartaInicial cartaAJugar
@@ -31,7 +40,7 @@ tienenMismoColor (UnaCarta color _) (UnaCarta otroColor _) = color == otroColor
 
 -- color :: Carta -> String
 -- color (unColor, _) = unColor
-color :: Carta -> String
+color :: Carta -> Color
 color (UnaCarta unColor _) = unColor 
 
 -- numero :: Carta -> Number

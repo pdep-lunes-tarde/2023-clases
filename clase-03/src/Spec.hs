@@ -3,10 +3,10 @@ import PdePreludat
 import Library
 import Test.Hspec
 
-ochoAzul = UnaCarta "Azul" 8
-ochoRojo = UnaCarta "Rojo" 8
-sieteAzul = UnaCarta "Azul" 7
-sieteVerde = UnaCarta "Verde" 7
+ochoAzul = UnaCarta Azul 8
+ochoRojo = UnaCarta Rojo 8
+sieteAzul = UnaCarta Azul 7
+sieteVerde = UnaCarta Verde 7
 
 
 correrTests :: IO ()
