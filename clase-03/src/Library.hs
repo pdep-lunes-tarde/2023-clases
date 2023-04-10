@@ -35,14 +35,19 @@ numero (_, unNumero) = unNumero
 -- Hay jugadores, que tienen un nombre y una cantidad de puntos que obtuvieron
 -- por sus resultados en partidas de uno.
 -- Queremos poder pedirle su nombre y también sus puntos.
-juan = implementame
+type Jugador = (String, Number)
 
-nombre jugador = implementame
+juan :: Jugador
+juan = ("Juan", 10)
+
+nombre :: Jugador -> String
+nombre (unNombre, _) = unNombre
 -- Ejemplo:
 -- nombre juan
 -- > "Juan"
 
-puntos jugador = implementame
+puntos :: Jugador -> Number
+puntos (_, unosPuntos) = unosPuntos
 -- Ejemplo:
 -- puntos juan
 -- > 10
