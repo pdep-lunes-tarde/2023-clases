@@ -65,8 +65,6 @@ numero (CartaNumerica _ unNumero) = unNumero
 -- por sus resultados en partidas de uno.
 -- Queremos poder pedirle su nombre y también sus puntos.
 -- type Jugador = (String, Number)
-data Jugador = UnJugador String Number
-    deriving (Eq, Show)
 
 juan :: Jugador
 -- juan = ("Juan", 10)
@@ -96,9 +94,10 @@ puntos (UnJugador _ unosPuntos) = unosPuntos
 juani = UnJugador "Juani" 15
 
 quienTieneMasPuntos :: Jugador -> Jugador -> Jugador
-quienTieneMasPuntos unJugador otroJugador
-    | puntos unJugador >= puntos otroJugador = unJugador
-    | otherwise = otroJugador
+-- quienTieneMasPuntos unJugador otroJugador
+--     | puntos unJugador >= puntos otroJugador = unJugador
+--     | otherwise = otroJugador
+quienTieneMasPuntos unJugador otroJugador = max unJugador otroJugador
 
 -- Queremos registrarle a un jugador el resultado de una partida:
 -- si el resultado es que ganó, suma 3 puntos
@@ -148,3 +147,8 @@ puntosQueDa Perdio = 0
 
 -- Queremos saber si un jugador es menor o igual a otro,
 -- esto se cumple si tiene menor o igual cantidad de puntos.
+data Jugador = UnJugador String Number
+    deriving (Eq, Show)
+
+instance Ord Jugador where
+    (UnJugador _ puntos) <= (UnJugador _ otrosPuntos) = puntos <= otrosPuntos
