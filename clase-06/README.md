@@ -7,9 +7,11 @@
 
 ## Para la clase que viene
 
-- Hacer el TP-5: **Link proximamente**.
+- Hacer el TP-5: https://classroom.github.com/a/4HzPIh8x
 
-- [Opcional] Desafío del café con leche: **Link proximamente**.
+- [Opcional] Desafío del café con leche:
+https://classroom.github.com/a/NRhBj5Na
+https://classroom.github.com/a/EsHJa7kz
 
 ## ¿Qué mas puedo leer, ver o practicar?
 
