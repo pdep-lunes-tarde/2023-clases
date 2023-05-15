@@ -1,5 +1,9 @@
 # Clase 7 - Lazy Evaluation
 
+## Para la clase que viene
+
+TP Integrador: https://classroom.github.com/a/9vFjZZ3M
+
 ## Material de la clase
 
 - Slides: https://docs.google.com/presentation/d/1M_YT47o6yDgRGIOpg1E8LpLFu4gbir5qvv9og5SiLHY/edit?usp=sharing
