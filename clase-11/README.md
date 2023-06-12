@@ -2,8 +2,7 @@
 
 ## Material de la clase
 
-- Clase grabada: https://drive.google.com/file/d/1VLGcoOACQsvgqBg9v0zmzFhdUwQL76-y/view?usp=sharing
-- Slides: https://docs.google.com/presentation/d/1dbxBmkxrkCsEye4-Z99eEN_q__-Yhf625j_xCewelxY/edit?usp=sharing
+- Slides: https://docs.google.com/presentation/d/1gddowhL1Eau1aWCmDiHTqUYM5ZnqtdEVc9i-ahp0_E4/edit?usp=sharing
 - Código: Acá :D.
 
 ## ¿¿¿COMO INSTALO PROLOG???
