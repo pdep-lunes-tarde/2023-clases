@@ -12,14 +12,9 @@ https://github.com/pdep-utn/enunciados-miercoles-noche/blob/master/pages/prolog/
 
 ## ¿Que hay para la clase que viene?
 
-TP-1: https://classroom.github.com/a/rpoM8Fuc
+TP-1: https://classroom.github.com/a/Xkda9h9v
 
 ## ¿Qué mas puedo leer, ver o practicar?
-
-### Práctica de Mumuki
-
-- [Lección 1: Hechos y Reglas](https://mumuki.io/pdep-utn/lessons/699-programacion-logica-hechos-y-reglas)
-- [Lección 2: Práctica Hechos y Reglas](https://mumuki.io/pdep-utn/lessons/700-programacion-logica-practica-hechos-y-reglas)
 
 ### Videos
 
