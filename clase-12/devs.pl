@@ -9,6 +9,7 @@ programaEn(juan, haskell).
 programaEn(juan, ruby).
 programaEn(caro, haskell).
 programaEn(caro, scala).
+programaEn(caro, javascript).
 
 sonColegas(UnaPersona,OtraPersona):-
     %   UnaPersona=juan  UnLenguaje=haskell
@@ -40,6 +41,22 @@ noProgramaEn(Persona, Lenguaje):-
     programaEn(Persona, _),
     not(programaEn(Persona, Lenguaje)).
 
+
+% Sabemos que alguien es irremplazable si programa en un lenguaje en el cual nadie más programa.
+
+irremplazable(Persona, Lenguaje):-
+    programaEn(Persona, Lenguaje),
+    not(
+        (programaEn(Colega, Lenguaje),
+        Colega \= Persona)
+        ).
+
+colegaRespectoDeLenguaje(Persona, Colega, Lenguaje):-
+    programaEn(Persona, Lenguaje),
+    programaEn(Colega, Lenguaje),
+    Persona \= Colega.
+
+
 :-begin_tests(intro_logico).
 
 test(una_persona_puede_aprender_un_lenguaje_de_otra_si_desconoce_un_lenguaje_en_el_que_la_otra_programa, nondet):-
@@ -50,4 +67,14 @@ test(una_persona_no_puede_aprender_un_lenguaje_de_otra_si_ya_conoce_el_lenguaje)
 
 test(una_persona_no_puede_aprender_un_lenguaje_de_otra_si_la_otra_persona_no_conoce_el_lenguaje):-
     not(puedeAprenderDe(nahuel, scala, juan)).
+
+test(una_persona_es_irremplazable_si_es_la_unica_que_programa_en_algun_lenguaje):-
+  irremplazable(caro, scala).
+
+test(una_persona_NO_es_irremplazable_en_un_lenguaje_si_alguien_mas_programa_en_ese_lenguaje):-
+  not(irremplazable(caro, haskell)).
+
+test(una_persona_NO_es_irremplazable_si_no_hay_ningun_lenguaje_en_el_cual_sea_la_unica_que_programa):-
+  not(irremplazable(nahuel, _)).
+
 :-end_tests(intro_logico).
