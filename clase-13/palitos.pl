@@ -89,6 +89,48 @@ estaTriste(Persona):-
     forall(tiene(Persona, Animal, _),
             not(leGusta(Persona, Animal))).
 
+estaFeliz(Persona):-
+    tiene(Persona, _, _),
+    forall(tiene(Persona, Animal, _),
+            leGusta(Persona, Animal)).
+
+tieneTodosDe(Persona, Categoria):-
+    tiene(Persona, _, _),
+    esDeCategoria(_, Categoria),
+    forall(tiene(Persona, Animal, _),
+            esDeCategoria(Animal, Categoria)).
+
+esDeCategoria(Animal, Clase):-
+    animal(Animal, Clase, _).
+esDeCategoria(Animal, Medio):-
+    animal(Animal, _, Medio).
+
+completoLaColeccion(Persona):-
+    tiene(Persona, _, _),
+    forall(animal(Animal, _, _),
+        tiene(Persona, Animal, _)).
+
+manejaElMercado(Persona):-
+    tiene(Persona, _, _),
+    forall(
+        (
+            OtraPersona \= Persona,
+            tiene(OtraPersona, _, _)
+        ),
+            tieneParaOfrecerle(Persona, OtraPersona)
+    ).
+
+delQueMasTiene(Persona, Animal):-
+    tiene(Persona, Animal, Cantidad),
+    forall(
+        (
+            tiene(Persona, OtroAnimal, CantidadDeOtro),
+            OtroAnimal \= Animal
+        ),
+        Cantidad > CantidadDeOtro
+    ).
+
+
 :- begin_tests(palitos).
 
 test(si_un_animal_es_terrestre_y_no_es_el_lemur_le_gusta_a_nico, nondet):-
@@ -154,7 +196,7 @@ test(una_persona_no_tiene_para_intercambiar_un_animal_que_tenga_una_sola_vez_y_l
 test(juanR_tiene_para_intercambiar_los_animales_que_tiene_juanDS, nondet):-
     tieneParaIntercambiar(juanR, golondrina).
 
-test(una_persona_tiene_para_ofrecerle_animales_a_otra_si_los_tiene_para_intercambiar_y_a_la_otra_persona_le_gustan_y_no_los_tiene):-
+test(una_persona_tiene_para_ofrecerle_animales_a_otra_si_los_tiene_para_intercambiar_y_a_la_otra_persona_le_gustan_y_no_los_tiene, nondet):-
     tieneParaOfrecerle(maiu, nico, leon).
 
 test(una_persona_no_puede_ofrecer_un_animal_que_no_puede_intercambiar):-
@@ -171,5 +213,29 @@ test(dos_personas_pueden_negociar_si_pueden_ofrecerse_animales_mutuamente, nonde
 
 test(dos_personas_no_pueden_neogicar_si_no_pueden_ofrecerse_animales_mutuamente, nondet, nondet):-
     puedenNegociar(juan, maiu).
+
+test(una_persona_esta_triste_si_tiene_solo_animales_que_no_le_gustan, nondet):-
+    estaTriste(nico).
+
+test(una_persona_no_esta_triste_si_tiene_algun_animal_que_le_gusta, nondet):-
+    not(estaTriste(maiu)).
+
+test(una_persona_esta_feliz_si_le_gustan_todos_los_animales_que_tiene, nondet):-
+    estaFeliz(juanR).
+
+test(una_persona_no_esta_feliz_si_tiene_algun_animal_que_no_le_gusta, nondet):-
+    not(estaFeliz(maiu)).
+
+test(una_persona_tiene_todos_de_un_medio_si_todos_sus_animales_son_de_ese_medio):-
+    tieneTodosDe(feche, acuatico).
+
+test(una_persona_tiene_todos_de_una_clase_si_todos_sus_animales_son_de_esa_clase):-
+    tieneTodosDe(feche, pez).
+
+test(una_persona_no_tiene_todos_de_un_medio_o_clase_si_tiene_al_menos_alguno_que_no_sea_de_ese_medio_o_clase, nondet):-
+    not(tieneTodosDe(juanDS, terrestre)).
+
+test(una_persona_no_completo_la_coleccion_si_le_falta_algun_animal):-
+    not(completoLaColeccion(juanDS)).
 
 :- end_tests(palitos).
