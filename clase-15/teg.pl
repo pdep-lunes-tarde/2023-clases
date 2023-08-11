@@ -130,3 +130,52 @@ ocupa(francia, rojo).
 ocupa(granBretania, rojo).
 ocupa(espania, rojo).
 ocupa(alemania, rojo).
+
+puedeIncorporar(Jugador, CantidadDeFichas):-
+    puedeIncorporarPorPaises(Jugador, CantidadPorPaises),
+    puedeIncorporarPorContinentes(Jugador, CantidadPorContinentes),
+    CantidadDeFichas is CantidadPorPaises + CantidadPorContinentes.
+
+fichasPorContinente(asia, 7).
+fichasPorContinente(europa, 5).
+fichasPorContinente(americaDelNorte, 5).
+fichasPorContinente(americaDelSur, 3).
+fichasPorContinente(africa, 3).
+fichasPorContinente(oceania, 2).
+
+puedeIncorporarPorContinentes(Jugador, Cantidad):-
+    jugador(Jugador),
+    findall(FichasPorContinente,
+            (
+            ocupaContinente(Jugador, Continente),
+            fichasPorContinente(Continente, FichasPorContinente)
+            ),
+            ListaDeFichas),
+    sum_list(ListaDeFichas, Cantidad).
+
+ocupaContinente(Jugador, Continente):-
+    jugador(Jugador),
+    continente(Continente),
+    forall(estaEn(Continente, Pais),
+            ocupa(Pais, Jugador)).
+
+puedeIncorporarPorPaises(Jugador, CantidadDeFichas):-
+    cantidadDePaises(Jugador, CantidadDePaises),
+    CantidadDePaises > 6,
+    CantidadDeFichas is CantidadDePaises // 2.
+
+puedeIncorporarPorPaises(Jugador, 3):-
+    cantidadDePaises(Jugador, CantidadDePaises),
+    CantidadDePaises =< 6.
+
+cantidadDePaises(Jugador, Cantidad):-
+    jugador(Jugador),
+    findall(Pais, ocupa(Pais, Jugador), Paises),
+    length(Paises, Cantidad).
+
+elQueMasPaisesTiene(Jugador):-
+    cantidadDePaises(Jugador, Cantidad),
+    forall(
+        cantidadDePaises(OtroJugador, OtraCantidad),
+        Cantidad >= OtraCantidad
+    ).
