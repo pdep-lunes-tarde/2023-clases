@@ -2,12 +2,12 @@
 
 ## Material de la clase
 
-- Slides: 
+- Slides: https://docs.google.com/presentation/d/1_7ZcbBccs5KiNVVuvZYWhyJWgudYCJp39VRrYZ-ktIc/edit?usp=drive_link
 - Código: Acá :D.
 
 ## ¿Que hay para la clase que viene?
 
-TP-Integrador: **Durante la semana se libera**
+TP-Integrador: https://classroom.github.com/a/eK-_pX7l
 
 ## ¿Qué mas puedo leer, ver o practicar?
 
