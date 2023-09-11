@@ -1,0 +1,23 @@
+import aves.*
+
+describe "josefa" {
+	test "la energia inicial de josefa es 80" {
+		assert.equals(80, josefa.dameTuEnergia())
+	}
+	test "a su energia se le restan los kilometros volados * 5" {
+		josefa.volar(10)
+		
+		assert.equals(30, josefa.dameTuEnergia())
+	}
+	test "a su energia se le suman los gramos comidos * 3" {
+		josefa.comer(3)
+		
+		assert.equals(89, josefa.dameTuEnergia())
+	}
+	test "la energia de josefa es su energia inicial - kms recorridos * 5 + gramos comidos * 3" {
+		josefa.volar(10)
+		josefa.comer(3)
+		
+		assert.equals(39, josefa.dameTuEnergia())
+	}
+}
