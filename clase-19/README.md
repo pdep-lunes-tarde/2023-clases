@@ -3,6 +3,7 @@
 ## Material de la clase
 
 - Código: Acá :D.
+- Slides: https://docs.google.com/presentation/d/1uWZcgy5GMucxDILoaD537uQJdmtGMVG4X0NQXaqmG48/edit?usp=sharing
 
 ## ¿Que hay para la clase que viene?
 
