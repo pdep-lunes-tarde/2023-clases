@@ -1,0 +1,8 @@
+import nivel.*
+import wollok.game.*
+
+program juego {
+	nivel.armar()
+	game.cellSize(128)
+	game.start()
+}

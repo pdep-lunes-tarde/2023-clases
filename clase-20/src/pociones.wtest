@@ -1,0 +1,60 @@
+import ingredientes.*
+import pocion.*
+
+describe "Pociones" {
+	method bigoteDeGato() {
+		return bigoteDeGato
+	}
+	method trebolDe4Hojas() {
+		return new Trebol(hojas=4)
+	}
+	method hiedraVenenosaCon(concentracionDeVeneno) {
+		return new HiedraVenenosa(
+			concentracionDeVeneno=concentracionDeVeneno
+		)
+	}
+	
+	test "una pocion recien creada tiene 0 ingredientes" {
+		const pocion = new Pocion()
+		
+		assert.equals(0, pocion.cantidadDeIngredientes()
+		)
+	}
+	
+	test "una pocion tiene tantos ingredientes como le haya agregado" {
+		const pocion = new Pocion()
+		const ingrediente = self.bigoteDeGato()
+		
+		pocion.agregarIngrediente(ingrediente)
+		
+		assert.equals(1, pocion.cantidadDeIngredientes())
+	}
+	
+	test "una pocion sin ingredientes tiene rareza 0" {
+		const pocion = new Pocion()
+		
+		assert.equals(0, pocion.rareza())
+	}
+	
+	test "una pocion con un ingrediente tiene una rareza igual a la rareza de ese ingrediente" {
+		const pocion = new Pocion()
+		const ingrediente = self.bigoteDeGato()
+
+		pocion.agregarIngrediente(ingrediente)
+		
+		assert.equals(1, pocion.rareza())
+	}
+	
+	test "la rareza de una pocion con varios ingredientes es el promedio de las rarezas de dichos ingredientes" {
+		const pocion = new Pocion()
+		const bigoteDeGato = self.bigoteDeGato()
+		const trebolDe4Hojas = self.trebolDe4Hojas()
+		const hiedraVenenosa = self.hiedraVenenosaCon(6)
+		
+		pocion.agregarIngrediente(bigoteDeGato)
+		pocion.agregarIngrediente(trebolDe4Hojas)
+		pocion.agregarIngrediente(hiedraVenenosa)
+		
+		assert.equals(9, pocion.rareza())
+	}
+}

@@ -1,0 +1,33 @@
+import ingredientes.*
+
+describe "ingredientes" {
+	test "rareza de un bigote de gato es 1" {
+		assert.equals(1, bigoteDeGato.rareza())
+	}
+	
+	
+	test "la rareza de un trebol de 4 hojas es 20" {
+		const trebolDe4Hojas = new Trebol(hojas=4)
+		
+		assert.equals(20, trebolDe4Hojas.rareza())
+	}
+	
+	test "la rareza de un trebol de menos de 4 hojas es 1" {
+		const trebolDe3Hojas = new Trebol(hojas=3)
+		
+		assert.equals(1, trebolDe3Hojas.rareza())
+	}
+	
+	test "la rareza de un trebol de mas de 4 hojas es 1" {
+		const trebolDe5Hojas = new Trebol(hojas=5)
+		
+		assert.equals(1, trebolDe5Hojas.rareza())
+	}
+	
+	test "la rareza de una hiedra venenosa es igual a su concentracion de veneno" {
+		const hiedraVenenosa = new HiedraVenenosa(concentracionDeVeneno=5) 
+		
+		assert.equals(5, hiedraVenenosa.rareza())
+	}
+
+}
