@@ -5,11 +5,12 @@
 - Código: Acá :D.
 - Enunciado del ejercicio: https://docs.google.com/document/d/1vRITVuTDxrvap9Va7sL74aogu9FnoEOVgN0IbplzyPo/edit?usp=sharing
 
+## Para la clase que viene
+
+TP corto 3: https://classroom.github.com/a/NpzNaxYV
+Trabajar en el tp integrador que haremos checkpoint presencial.
+
 ## ¿Qué mas puedo leer, ver o practicar?
-
-## TP corto 4
-
-https://classroom.github.com/a/StILYgET
 
 ### Apuntes de la cátedra
 - [Módulo 12: Colecciones](https://docs.google.com/document/d/1MLbx1Fxt7I_uVg6Yv9hYfIu2IIbUQqqICbOM3s969D8/edit)
