@@ -29,5 +29,29 @@ describe "ingredientes" {
 		
 		assert.equals(5, hiedraVenenosa.rareza())
 	}
+	
+	test "hervir un bigote de gato lo deja igual" {
+		bigoteDeGato.hervir()
+		
+		assert.equals(1, bigoteDeGato.rareza())
+	}
+	
+	test "hervir un trebol, hace que pierda una hoja" {
+		const trebol = new Trebol(hojas=5)
+
+		trebol.hervir()
+
+		assert.equals(4, trebol.hojas())
+		assert.equals(20, trebol.rareza())
+	}
+	
+	test  "hervir una hiedra venenosa, duplica su concentracion de veneno" {
+		const hiedraVenenosa = new HiedraVenenosa(concentracionDeVeneno=6)
+		
+		hiedraVenenosa.hervir()
+		
+		assert.equals(12, hiedraVenenosa.concentracionDeVeneno())
+		assert.equals(12, hiedraVenenosa.rareza())
+	}
 
 }

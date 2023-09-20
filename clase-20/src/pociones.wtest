@@ -57,4 +57,42 @@ describe "Pociones" {
 		
 		assert.equals(9, pocion.rareza())
 	}
+	
+	test "destilar una pocion le quita todos sus ingredientes de rareza menor o igual a 5" {
+		const pocion = new Pocion()
+		pocion.agregarIngrediente(self.bigoteDeGato())
+		pocion.agregarIngrediente(self.trebolDe4Hojas())
+		
+		pocion.destilar()
+		
+		assert.equals(20, pocion.rareza())
+		assert.equals(1, pocion.cantidadDeIngredientes())
+	}
+	
+	test "hervir una pocion, hierve todos sus ingredientes" {
+		const pocion = new Pocion()
+		const bigoteDeGato = self.bigoteDeGato()
+		const trebolDe4Hojas = self.trebolDe4Hojas()
+		const hiedraVenenosa = self.hiedraVenenosaCon(6)
+		pocion.agregarIngredientes([bigoteDeGato, trebolDe4Hojas, hiedraVenenosa])		
+
+		pocion.hervir()
+		
+		
+		assert.equals(3, trebolDe4Hojas.hojas())
+		assert.equals(12, hiedraVenenosa.concentracionDeVeneno())
+	}
+	
+	test "una pocion puede ser un ingrediente de otra pocion" {
+		const pocion = new Pocion()
+		const pocionIngrediente = new Pocion()
+		pocionIngrediente.agregarIngredientes(
+			[bigoteDeGato, new HiedraVenenosa(concentracionDeVeneno=7)]
+		)
+		
+		pocion.agregarIngrediente(pocionIngrediente)
+		pocion.agregarIngrediente(bigoteDeGato)
+		
+		assert.equals(2.5, pocion.rareza())
+	}
 }
