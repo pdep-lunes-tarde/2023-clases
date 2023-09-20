@@ -8,7 +8,7 @@
 ## ¿Que hay para la clase que viene?
 
 - Hacer el TP-2: https://classroom.github.com/a/5aT7qEgp
-- Traer ideas para el tp integrador. Si ya se decidió por alguna, arrancar el tp: **PROXIMAMENTE LINK ACA**
+- Traer ideas para el tp integrador. Si ya se decidió por alguna, arrancar el tp: https://classroom.github.com/a/59A_7T3-
 
 ## ¿Qué mas puedo leer, ver o practicar?
 

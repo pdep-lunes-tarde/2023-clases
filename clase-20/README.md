@@ -8,7 +8,7 @@
 ## Para la clase que viene
 
 TP corto 3: https://classroom.github.com/a/NpzNaxYV
-Trabajar en el tp integrador que haremos checkpoint presencial.
+Trabajar en el tp integrador que haremos checkpoint presencial: https://classroom.github.com/a/59A_7T3-
 
 ## ¿Qué mas puedo leer, ver o practicar?
 
