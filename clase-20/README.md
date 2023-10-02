@@ -1,4 +1,4 @@
-## Clase 22: Colecciones y bloques
+## Clase 20: Colecciones y bloques
 
 ## Material de la clase
 
