@@ -1,0 +1,143 @@
+import actividades.*
+import estudiante.*
+import testHelper.*
+
+describe "escuchar musica" {
+	test "cuando un estudiante la hace se desestreza" {
+		const unEstudiante = new Estudiante(estresado=true)
+		
+		new EscucharMusica().hacerse(unEstudiante)
+		
+		assert.notThat(unEstudiante.estresado())
+	}
+	
+	test "siempre la puede hacer un estudiante" {
+		const unEstudiante = new Estudiante()
+		
+		assert.that(new EscucharMusica().laPuedeHacer(unEstudiante))
+	}
+}
+
+describe "escuchar cancion favorita" {
+	test "cuando un estudiante la hace se desestreza y aumenta su energia en 20" {
+		const unEstudiante = new Estudiante(estresado=true, energia=0)
+		
+		new EscucharCancionFavorita().hacerse(unEstudiante)
+		
+		assert.equals(20, unEstudiante.energia())
+		assert.notThat(unEstudiante.estresado())
+	}
+	
+	test "siempre la puede hacer un estudiante" {
+		const unEstudiante = new Estudiante()
+
+		assert.that(new EscucharCancionFavorita().laPuedeHacer(unEstudiante))
+	}
+}
+
+describe "tomar cafe" {
+	test "aumenta la energía de un estudiante en 30 si tiene 200 de cafeina o menos" {
+		const unEstudiante = new Estudiante(energia=0)
+
+		new TomarCafe(cafeina=200).hacerse(unEstudiante)
+
+		assert.equals(30, unEstudiante.energia())
+	}
+	
+	test "aumenta la energia en 30 y estresa al estudiante si tiene mas de 200 de cafeina" {
+		const unEstudiante = new Estudiante(energia=0, estresado=false)
+
+		new TomarCafe(cafeina=201).hacerse(unEstudiante)
+
+		assert.equals(30, unEstudiante.energia())
+		assert.that(unEstudiante.estresado())
+	}
+	
+	test "un estudiante la puede hacer si le siguen quedando tazas" {
+		const tomarCafe = new TomarCafe(cafeina=100)
+		const unEstudiante = new Estudiante(tazasLimpias=3)
+		
+		assert.that(tomarCafe.laPuedeHacer(unEstudiante))
+	}
+	
+	test "un estudiante no la puede hacer si no le quedan mas tazas" {
+		const tomarCafe = new TomarCafe(cafeina=100)
+		const unEstudiante = new Estudiante(tazasLimpias=3)
+
+		3.times { n => tomarCafe.hacerse(unEstudiante) }
+		
+		assert.notThat(tomarCafe.laPuedeHacer(unEstudiante))
+	}
+}
+
+describe "estudiar" {
+	test "un tema facil cansa al estudiante en 1 por la cantidad de horas y aumenta sus horas de estudio" {
+		const unEstudiante = new Estudiante(energia=100, horasDeEstudio=0)
+		
+		estudiar.temaFacil(3).hacerse(unEstudiante)
+		
+		assert.equals(97, unEstudiante.energia())
+		assert.equals(3, unEstudiante.horasDeEstudio())		
+	}
+	
+	test "un tema regular cansa al estudiante en 5 por la cantidad de horas y aumenta sus horas de estudio" {
+		const unEstudiante = new Estudiante(energia=100, horasDeEstudio=0)
+		
+		estudiar.temaRegular(3).hacerse(unEstudiante)
+		
+		assert.equals(85, unEstudiante.energia())
+		assert.equals(3, unEstudiante.horasDeEstudio())		
+	}
+	
+	test "un tema dificil cansa al estudiante en 10 por la cantidad de horas y aumenta sus horas de estudio" {
+		const unEstudiante = new Estudiante(energia=100, horasDeEstudio=0)
+		
+		estudiar.temaDificil(3).hacerse(unEstudiante)
+		
+		assert.equals(70, unEstudiante.energia())
+		assert.equals(3, unEstudiante.horasDeEstudio())
+	}
+	
+	test "un estudiante la puede hacer si esta concentrado sin importar la dificultad del tema" {
+		const estudianteConcentrado = testHelper.estudianteConcentradoConHorasDeEstudio(0)
+		
+		assert.that(estudiar.temaFacil(1).laPuedeHacer(estudianteConcentrado))
+		assert.that(estudiar.temaRegular(1).laPuedeHacer(estudianteConcentrado))
+		assert.that(estudiar.temaDificil(1).laPuedeHacer(estudianteConcentrado))
+	}
+	
+	test "un estudiante no la puede hacer si esta desconcentrado sin importar la dificultad del tema" {
+		const estudianteConcentrado = testHelper.estudianteDesconcentrado()
+		
+		assert.notThat(estudiar.temaFacil(1).laPuedeHacer(estudianteConcentrado))
+		assert.notThat(estudiar.temaRegular(1).laPuedeHacer(estudianteConcentrado))
+		assert.notThat(estudiar.temaDificil(1).laPuedeHacer(estudianteConcentrado))
+	}
+}
+
+describe "tomar te" {
+	test "aumenta la energía de un estudiante en 5 y lo desestreza" {
+		const unEstudiante = new Estudiante(energia=0, estresado=true)
+
+		new TomarTe().hacerse(unEstudiante)
+
+		assert.equals(5, unEstudiante.energia())
+		assert.notThat(unEstudiante.estresado())
+	}
+	
+	test "un estudiante la puede hacer si le siguen quedando tazas" {
+		const tomarTe = new TomarTe()
+		const unEstudiante = new Estudiante(tazasLimpias=3)
+		
+		assert.that(tomarTe.laPuedeHacer(unEstudiante))
+	}
+	
+	test "un estudiante no la puede hacer si no le quedan mas tazas" {
+		const tomarTe = new TomarTe()
+		const unEstudiante = new Estudiante(tazasLimpias=3)
+
+		3.times { n => tomarTe.hacerse(unEstudiante) }
+		
+		assert.notThat(tomarTe.laPuedeHacer(unEstudiante))
+	}
+}
